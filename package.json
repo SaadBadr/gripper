@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "grip.js",
-  "author": "",
+  "author": "Saad Badr",
   "license": "ISC",
   "dependencies": {
     "cherio": "^1.0.0-rc.2",
