@@ -1,11 +1,16 @@
 # gripper
-fetchs all download urls from 'index of' webpages and put them in a text file.
 
+fetches all files urls from 'index of' webpages.
+
+- copies them to the clipboard.
+- saves them to a file 'links.txt'.
 
 ## Running command
-node grip.js url
+
+node grip.js your_url
 
 ### Example
+
 ```sh
 node grip.js https://www.website.com/home.html
 ```

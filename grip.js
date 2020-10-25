@@ -1,22 +1,18 @@
 const request = require("request");
 const cherio = require("cherio");
+const clipboardy = require("clipboardy");
 const url = process.argv[2];
 
-const writeFile = (arr) => {
+const writeFile = (str) => {
   const fs = require("fs");
-  const file = fs.createWriteStream("links.txt");
-  file.on("error", function (err) {
-    console.log("ERROR IN WRITING FILE!!!!");
-    console.log(err);
+  const file = fs.writeFile("links.txt", str, (err) => {
+    if (!err) console.log("links are saved to links.txt!");
+    else console.log("ERROR in copying to clipboard\n", err);
   });
-  arr.forEach(function (v) {
-    file.write(v + "\n");
-  });
-  file.end();
 };
 request(url, (error, response, html) => {
   if (error) {
-    console.log("ERROR IN WRITING FILE!!!!");
+    console.log("INTERNET ERROR!");
     console.log(error);
     return;
   }
@@ -27,9 +23,15 @@ request(url, (error, response, html) => {
       .split('"')[1];
   });
 
-  list = list.filter((el) => el != "../" && el != undefined);
+  list = list.filter(
+    (el) => el != "../" && el && !el.startsWith("?") && !el.startsWith("/")
+  );
 
   list = list.map((el) => url + el);
-
-  writeFile(list);
+  const str = list.join("\n");
+  clipboardy
+    .write(str)
+    .then(() => console.log("links are copied to the clipboard!"))
+    .catch((err) => console.log("ERROR in copying to clipboard\n", err));
+  writeFile(str);
 });
