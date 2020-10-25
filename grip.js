@@ -26,14 +26,19 @@ request(url, (error, response, html) => {
     console.log("INTERNET ERROR!\n", error);
     return;
   }
+
   const str = getUrls(html).join("\n");
 
-  clipboardy
-    .write(str)
-    .then(() => console.log("urls are copied to the clipboard!"))
-    .catch((err) => console.log("ERROR in copying to clipboard!\n", err));
+  if (!process.argv.includes("-nocopy"))
+    clipboardy
+      .write(str)
+      .then(() => console.log("urls are copied to the clipboard!"))
+      .catch((err) => console.log("ERROR in copying to clipboard!\n", err));
 
-  promisify(fs.writeFile)("links.txt", str)
-    .then(() => console.log("urls are saved to links.txt!"))
-    .catch((err) => console.log("ERROR in saving links to clipboard!\n", err));
+  if (!process.argv.includes("-nosave"))
+    promisify(fs.writeFile)("links.txt", str)
+      .then(() => console.log("urls are saved to links.txt!"))
+      .catch((err) =>
+        console.log("ERROR in saving links to clipboard!\n", err)
+      );
 });
