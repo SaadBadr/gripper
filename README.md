@@ -7,7 +7,7 @@ fetches all files urls from 'index of' webpages.
 
 ## Running command
 
-node grip.js your_url
+node grip.js your_url extra_option
 
 ## Options
 
