@@ -1,0 +1,12 @@
+{
+  "name": "urls-gripper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "grip.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cherio": "^1.0.0-rc.2",
+    "request": "^2.88.2"
+  }
+}
