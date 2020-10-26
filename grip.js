@@ -3,7 +3,9 @@ const cheerio = require('cheerio');
 const clipboardy = require('clipboardy');
 const fs = require('fs');
 const { promisify } = require('util');
-const url = process.argv[2];
+const url = process.argv[2].endsWith('/')
+  ? process.argv[2]
+  : process.argv[2] + '/';
 
 const verifyUrl = (el) =>
   el && !el.startsWith('../') && !el.startsWith('?') && !el.startsWith('/');

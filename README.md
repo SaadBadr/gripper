@@ -7,7 +7,7 @@ fetches all files urls from 'index of' webpages.
 
 ## Running command
 
-node grip.js your_url extra_option
+node grip.js "your_url" extra_option
 
 ## Options
 
@@ -17,19 +17,19 @@ node grip.js your_url extra_option
 ## Examples
 
 ```sh
-node grip.js https://www.website.com/home.html
+node grip.js "https://www.website.com/home.html"
 ```
 
 - copy to the clipboard and save to links.txt all files urls in https://www.website.com/home.html
 
 ```sh
-node grip.js https://www.website.com/home.html -nosave
+node grip.js "https://www.website.com/home.html" -nosave
 ```
 
 - only copy to the clipboard all files urls in https://www.website.com/home.html
 
 ```sh
-node grip.js https://www.website.com/home.html
+node grip.js "https://www.website.com/home.html" -nocopy
 ```
 
 - only save to links.txt all files urls in https://www.website.com/home.html
